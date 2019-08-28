@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/styles/firstpage.css">
+        <style>
+            body{
+                margin: 20px;
+            }
+            .mycontainer{
+                border: 2px ;
+                height: 700px;
+                grid-row-gap: 5em;
+            }
+            .myrowMain{
+                border: 2px ;
+                height: 100%;
+            }
+            .mycol{
+                
+                border: 2px solid #C8C8C8;
+                
+            }
+            .rowcc{
+                border: 2px dotted red;
+            }
+            .innerCol{
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            .buttojn{
+                background-color: rgba(0, 0, 0, 0); 
+                font-size: 20px;
+                color: white;
+                -webkit-transition: all 0.2s ease-in-out;
+                
+            }
+            .buttojn2{
+                background-color: rgba(0, 0, 0, 0); 
+                font-size: 20px;
+                color: white;
+                
+                
+            }
+            .buttojn:hover{
+                -webkit-transform: scale(1.02);
+                background: #1E90FF;
+            }
+        </style>
+    
+    </head>
+    
+    <body class="back" style="width: 100%; height: 100%;">
+        
+        <div style="padding-top: 10px " class="d-flex justify-content-center">
+            <div>
+                <h1 class="text-white">QQviz</h1>
+            </div>
+            
+        </div>
+        <div class="container mycontainer backQviz" >
+            <div class="row myrowMain  " >
+                <div class="col-3  ">
+                    
+                    <div class="row  innerCol myrowMain justify-content-end" >
+                        
+                        <ul class="col-11 mycol " style="list-style-type: none">
+                            {% for row in sviPredmeti %}
+                                <li class="" >
+                                    <form name="vform" method="POST" id="form">
+                                    <button class="buttojn2" style="border: none" name="ime" type="text" type="submit" value="{{row[0]}}">
+                                        {{row[1]}}
+                                    </button>
+                                    </form>
+                                 </li>
+                            {% endfor %}
+                        </ul>  
+                    </div>
+                    
+                </div>
+                
+                <div class="col-9  innerCol" id=app>
+                    
+                    <div class="row justify-content-around " style="height: 250px" >
+                            <div class="col-11 mycol text-white" style="text-align: center">
+                                    <h5>
+                                        {% if trenutnoPitanje %}
+                                            {{trenutnoPitanje[0]}}
+                                        {% endif %}
+                                    </h5>    
+                                
+                                
+                            </div>
+                        </div>
+                    <div class="row  justify-content-around  innerCol" style="padding-top: 60px">
+                        {% if trenutnoPitanje %}
+                        <form name="vform" method="POST" id="form2" class="col-5  ">
+                            <button class="buttojn2"  style="height: 100%; width: 100%"  v-if={{odgovoreno}} disabled>
+                                {{trenutnoPitanje[1]}}
+                            </button>
+                            <button class="buttojn" value="{{trenutnoPitanje[1]}}" style="height: 100%; width: 100%" name="answer" v-else >
+                                {{trenutnoPitanje[1]}}
+                            </button>
+                        </form>
+                        {% endif %}
+                        {% if trenutnoPitanje %}
+                            <form name="vform" method="POST" id="form2" class="col-5  ">
+                                <button class="buttojn2"  style="height: 100%; width: 100%"  v-if={{odgovoreno}} disabled>
+                                    {{trenutnoPitanje[2]}}
+                                </button>
+                                <button class="buttojn" value="{{trenutnoPitanje[2]}}" style="height: 100%; width: 100%" name="answer" v-else>
+                                    {{trenutnoPitanje[2]}}
+                                </button>
+                            </form>
+                        {% endif %}
+                        
+                    </div>
+                    <div class="row  justify-content-around  innerCol" v-on:change="change3($event)"  >
+                        {% if trenutnoPitanje %}
+                        <form name="vform" method="POST" id="form2" class="col-5  ">
+                            <button class="buttojn2"  style="height: 100%; width: 100%"  v-if={{odgovoreno}} disabled>
+                                {{trenutnoPitanje[3]}}
+                            </button>
+                            <button class="buttojn" value="{{trenutnoPitanje[3]}}" style="height: 100%; width: 100%" name="answer" v-else>
+                                {{trenutnoPitanje[3]}}
+                            </button>
+
+                        </form>
+                        {% endif %}
+                        {% if trenutnoPitanje %}
+                            <form name="vform" method="POST" id="form2" class="col-5  ">
+                                <button class="buttojn2"  style="height: 100%; width: 100%"  v-if={{odgovoreno}} disabled>      
+
+                                    {{trenutnoPitanje[4]}}
+                                    
+                                </button>
+                                <button class="buttojn" value="{{trenutnoPitanje[4]}}" style="height: 100%; width: 100%" name="answer"  v-else>      
+
+                                    {{trenutnoPitanje[4]}}
+                                        
+                                </button>
+    
+                            </form>
+                        {% endif %}
+                        </div>
+                        {% if trenutnoPitanje %}
+                        <form name="vform" method="POST" >
+                            <div class="row  justify-content-center  innerCol">
+                                
+                                <button class="col-3 mycol justify-content-center buttojn" value="True" name="nextQuestion" v-if={{odgovoreno}}>
+                                    Sljedece pitanje 
+                                </button>
+                                
+                                
+                                <button class="col-3 mycol justify-content-center buttojn2" value="True" name="nextQuestion" v-else  disabled>
+                                    Sljedece pitanje 
+                                </button>
+                                
+                        </div>
+
+                        </form>
+                        {% endif %}
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <div class="d-flex justify-content-center" style="padding-bottom: 20px; color: #7FFF00"  v-if={{tocno}}>
+                                {% for message in messages %}
+                                    
+                                    {{message}}
+                                
+                                {% endfor %}
+                                </div>
+                                <div class="d-flex justify-content-center text-white" style="padding-bottom: 20px" v-else >
+                                {% for message in messages %}
+        
+                                    {{message}}
+                                        
+                                {% endfor %}
+                                </div>
+                                
+                            {% endif %}
+                        {% endwith %}
+                </div>
+                
+
+
+
+            </div>
+
+<br>
+<br>
+            
+        {% if User == "true" %}
+            <div  style="width: 100%" >
+                <h1 style="text-align: center" >
+                    <a href="login" >DODAJ NOVO PITANJE {{User}}</a> 
+                
+                </h1>
+
+            </div>
+
+        {% endif %}
+        
+        
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+    <script>
+    
+    
+            
+            var app = new Vue({
+                el:'#app',
+                    
+                
+            })
+            
+        </script>
+
+</html>

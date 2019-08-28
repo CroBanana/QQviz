@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="nigga" content="width=device-width, initial-scale=1">
+        <title>HE NIGGA BUT HE QUICK</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div id="app">
+            <h1>COUNT = {{count}}</h1>
+            
+            <ul>
+                <li v-for="part in lists">{{lists.text}}</li>
+            </ul>
+
+            <button @click="countUp" class="btn btn-primary">Press me!</button>
+            <button @click="countDown" class="btn btn-primary">Press me!</button>
+
+
+        </div>
+        
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hello Vue world<small>THIS IS CRUEL</small>',
+                nigg: 'he nigga but he quick',
+                sick: true,
+                lists:[
+                    {text:'sickbro'},
+                    {text:'notcool'},
+                    {text:'wazzap'}
+                ],
+                count:0
+            },
+            methods:{
+                countUp:function(){
+                    this.count+=1
+                },
+                countDown:function(){
+                    this.count-=1
+                }
+            }
+        })
+    </script>
+
+
+</html>

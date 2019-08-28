@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/styles/firstpage.css">
+    </head>
+<body class="back" style="width: 100%; height: 100%;">
+    <div id="app" >
+        <div style="padding-top: 100px;">
+        <form name="vform" id="form" method="POST">
+            <div class="d-flex justify-content-center" style=" height: 150px">
+                <div class="row">
+                    <h1 class="text-white">
+                         Ime: <input type="text" class="text-white inputFiled" placeholder="Vase ime" required name="ime">
+                    </h1>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center" style=" height: 150px">
+                <div class="row">
+                    <h1 class="text-white">
+                        Sifra: <input type="text"  class="text-white inputFiled" placeholder="Vasa sifra" required name="sifra">
+                    </h1>               
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    <div class="d-flex justify-content-center" style="padding-bottom: 20px"  >
+                        {% for message in messages %}
+                        <font size="5">
+                            <p style="color:#DC143C " >
+                                {{message}}
+                            </p>   
+                        </font>
+   
+                    {% endfor %}
+                    </div>
+                    
+                {% endif %}
+            {% endwith %}
+
+
+            <div class="d-flex justify-content-center" style=" height: 150px">
+                <div style="height: 100px;width: 200px" class="row">
+                     <button class="btn btn-success btn-lg" color="green" style="width: 200px" type="submit">
+                        PLAY
+                    </button>
+                 </div>
+            </div>
+
+        </form>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+
+    })
+</script>
+
+</html>

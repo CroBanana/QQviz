@@ -1,0 +1,58 @@
+.back{
+    background-image: url(images/Login.png);
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.inputFiled{
+    background-color: rgba(0, 0, 0, 0); 
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    
+}
+.backQviz{
+    background-image: url(images/TRUEQvizBackground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}.mycontainer{
+    border: 2px ;
+    height: 700px;
+    grid-row-gap: 5em;
+}
+.myrowMain{
+    border: 2px ;
+    height: 100%;
+}
+.mycol{
+    
+    border: 2px solid #C8C8C8;
+    
+}
+.rowcc{
+    border: 2px dotted red;
+}
+.innerCol{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.buttojn{
+    background-color: rgba(0, 0, 0, 0); 
+    font-size: 20px;
+    color: white;
+    -webkit-transition: all 0.2s ease-in-out;
+    
+}
+.buttojn2{
+    background-color: rgba(0, 0, 0, 0); 
+    font-size: 20px;
+    color: white;
+    
+    
+}
+.buttojn:hover{
+    -webkit-transform: scale(1.02);
+    background: #1E90FF;
+}

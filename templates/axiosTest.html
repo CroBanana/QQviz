@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/styles/firstpage.css">
+    </head>
+<body class="back" style="width: 100%; height: 100%;" id="app" style="padding-left: 50px">
+    <h1>upisi stvari</h1>
+    <form >
+        <input type="text" v-model="user2.ime2">
+        <input type="text" v-model="user2.prezime2">
+        <button :click="formSubmit" type="submit">click me</button>    
+    </form>
+    
+    <h1 v-model='output'>click me</h1>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    export default{
+        name: 'app',
+        data(){
+            return{
+                user2:{ime2:'',prezime2:''}
+            }
+        },
+        methods:{
+            test(){
+                let new3 = {
+                    ime2: this.user2.ime2,
+                    prezime2:this.user2.prezime2
+                }
+                console.log(new3)
+            }
+        }
+
+    }
+</script>
+<script>
+
+    var app=new Vue({
+        
+        el: '#app',
+        
+        data(){
+            output=''
+            return{
+                user:{ime:'',prezime:''}
+            }
+        },
+        methods:{
+            formSubmit(){
+                let novo ={
+                    ime: this.user.ime,
+                    prezime: this.user.prezime
+                }
+                console.log(this.novo);
+                
+            }
+        }
+        
+    })
+    
+
+</script>
+
+
+
+</html>

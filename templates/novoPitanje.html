@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/styles/firstpage.css">
+        <style>
+        .mycol{
+            
+            border: 2px solid #C8C8C8;
+            
+        }            
+
+
+        </style>
+    </head>
+<body class="back" style="width: 100%; height: 100%;">
+    <form method="POST" name="vform">
+    <div class="container " style="padding-top: 30px">
+        <div class="row  justify-content-around">
+
+            <div class="col-2 mycol text-white" > 
+                <h4>Predmet za unos</h4>
+                {% for row in sviPredmeti %}
+                    <input type="radio" name="predmetID" value={{row[0]}} checked >{{row[1]}}<br>
+                {% endfor %}
+                
+            </div>
+            <div class="col-9  text-white" style="text-align: center">
+                <h1 style="text-align: center">Novo pitanje</h1>
+                <form>
+                    <h4 style="text-align: left">
+                        Pitanje: <input class="inputFiled text-white"   name="pitanje" type="text" required>
+                    </h4 >
+                    <br>
+                    <h4 style="text-align: left">
+                        Tocan odgovor: <input class=" inputFiled text-white" name="tOdgovor" type="text" required  style="overflow: visible" id="test">
+                    </h4 >
+                    <br>
+                    <h4 style="text-align: left">
+                        Netocan odgovor: <input class="inputFiled text-white"  name="n1Odgovor" type="text" required>
+                    </h4 >
+                    <br>
+                    <h4 style="text-align: left">
+                        Netocan odgovor 2: <input class="inputFiled text-white"  name="n2Odgovor" type="text" required>
+                    </h4>
+                    <br>
+                    <h4 style="text-align: left">
+                        Netocan odgovor 3: <input class="inputFiled text-white"  name="n3Odgovor" type="text" required>
+                    </h4>
+                    <br>
+                    <br>
+                    <button class="btn-success  " type="submit" >Posalji Pitanje</button>
+                
+                
+            </div>
+            
+        </div>
+    
+    </div>
+    </form>
+    <br>
+    <br>
+    <form style="text-align: center" method="POST">
+            <h4 class="text-white">
+                Novi predmet
+            </h4>
+            <br>
+            <input type="text" name="novi">
+            <button class="btn-success" type="submit">
+                Potvrdi novi predmet
+            </button>
+
+        </form>
+        <br>
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    <div class="d-flex justify-content-center" style="padding-bottom: 20px"  >
+                        {% for message in messages %}
+                        
+                        <h4>{{message}}</h4>
+   
+                    {% endfor %}
+                    </div>
+                    
+                {% endif %}
+            {% endwith %}
+</body>
+
+
+</html>
